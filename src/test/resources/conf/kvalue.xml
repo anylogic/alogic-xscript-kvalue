@@ -1,0 +1,44 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<kvdb>
+	<context>
+		<schema id="demo" module="com.logicbus.redis.kvalue.RedisSchema">
+			<redis.source module="com.logicbus.redis.context.InnerContext">
+				<rcp id = "redis0" host="${redis.server0.ip}" port="${redis.server0.port}" defaultDB="0" maxIdle="20" maxActive="100"/>
+			</redis.source>
+			<redis.tables>
+				<table name="zset" possessive="false" dataType="SortedSet">
+					<partitioner module="com.logicbus.kvalue.common.SimpleHash" nodesCnt="1">
+						<partition src="redis0"/>
+						<partitions>
+							<partition case="0" src="redis0"/>
+						</partitions>
+					</partitioner>									 
+				</table>	
+				<table name="hash" possessive="false" dataType="Hash">
+					<partitioner module="com.logicbus.kvalue.common.SimpleHash" nodesCnt="1">
+						<partition src="redis0"/>
+						<partitions>
+							<partition case="0" src="redis0"/>
+						</partitions>
+					</partitioner>									 
+				</table>	
+				<table name="str" possessive="false" dataType="String">
+					<partitioner module="com.logicbus.kvalue.common.SimpleHash" nodesCnt="1">
+						<partition src="redis0"/>
+						<partitions>
+							<partition case="0" src="redis0"/>
+						</partitions>
+					</partitioner>									 
+				</table>
+				<table name="list" possessive="false" dataType="List">
+					<partitioner module="com.logicbus.kvalue.common.SimpleHash" nodesCnt="1">
+						<partition src="redis0"/>
+						<partitions>
+							<partition case="0" src="redis0"/>
+						</partitions>
+					</partitioner>									 
+				</table>										
+			</redis.tables>
+		</schema>
+	</context>
+</kvdb>

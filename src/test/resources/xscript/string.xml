@@ -1,0 +1,27 @@
+<?xml version="1.0"?>
+<script>
+	<using xmlTag = "kv-row" module="com.alogic.xscript.kvalue.KVRow"/>
+	
+	<array tag="log">
+		<kv-row schema="demo" table="str" key="test">
+				<kv-set value="TEST"/>
+				
+				<array-item><get id="result" value="${$kv-set}"/></array-item>
+				
+				<kv-append value="APPEND"/>
+				<array-item><get id="result" value="${$kv-set}"/></array-item>			
+				
+				<kv-strlen id="length"/>
+				<array-item><get id="length" value="${length}"/></array-item>
+				
+				<kv-setrange value="Overwrite" offset="8"/>
+				<array-item><get id="result" value="${$kv-setrange}"/></array-item>					
+				
+				<kv-get id="data"/>
+				
+				<kv-del/>
+		</kv-row>
+	</array>
+	
+	<get id="data" value="${data}"/>
+</script>

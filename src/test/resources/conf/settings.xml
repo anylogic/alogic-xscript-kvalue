@@ -1,0 +1,6 @@
+<?xml version="1.0"?>
+<settings>
+	<parameter id="kvalue.master" value="java:///conf/kvalue.xml#App" />
+	<parameter id="redis.server0.ip" value="localhost" final="true"/>
+	<parameter id="redis.server0.port" value="6379" final="true"/>
+</settings>
