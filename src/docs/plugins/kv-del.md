@@ -3,6 +3,10 @@ kv-del
 
 kv-del用于删除当前row。
 
+kv-del会将操作结果以写入上下文变量，变量id由参数id定义，缺省为$kv-del。
+
+> 本指令对应Redis的操作指令[DEL](http://redis.io/commands/del)
+
 ### 实现类
 
 com.alogic.xscript.kvalue.KVDel
