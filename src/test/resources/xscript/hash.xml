@@ -2,22 +2,17 @@
 <script>
 	<using xmlTag = "kv-row" module="com.alogic.xscript.kvalue.KVRow"/>
 	
-	<array tag="log">
-		<kv-row schema="demo" table="hash" key="test">
-			<kv-hmset values="id;alogic;name;ketty;note;it's a web server"/>
+	<!-- 打开 -->
+	<kv-row schema="demo" table="hash" key="test">
+		<kv-hmset values="id;alogic;name;ketty;note;it's a web server"/>
+				
+		<kv-hset key="address" value="192.168.1.23"/>
 			
-			<array-item><get id="result" value="${$kv-hmset}"/></array-item>
-			
-			<kv-hset key="address" value="192.168.1.23"/>
-			<array-item><get id="result" value="${$kv-hset}"/></array-item>
-			
-			<kv-hget key="note"/>
-			<array-item><get id="result" value="${$kv-hget}"/></array-item>
-			
-			<kv-hmget tag="mget" keys="id;name"/>
-			
-			<kv-hgetall tag="getall"/>
-		</kv-row>
-	</array>
+		<kv-hget key="note"/>
+				
+		<kv-hmget tag="mget" keys="id;name"/>
+				
+		<kv-hgetall tag="getall"/>
+	</kv-row>
 	
 </script>
