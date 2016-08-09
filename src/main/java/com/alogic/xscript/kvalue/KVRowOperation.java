@@ -8,9 +8,9 @@ import com.alogic.xscript.AbstractLogiclet;
 import com.alogic.xscript.ExecuteWatcher;
 import com.alogic.xscript.Logiclet;
 import com.alogic.xscript.LogicletContext;
+import com.anysoft.util.BaseException;
 import com.anysoft.util.Properties;
 import com.anysoft.util.PropertiesConstants;
-import com.logicbus.backend.ServantException;
 import com.logicbus.kvalue.core.KeyValueRow;
 
 /**
@@ -46,7 +46,7 @@ public abstract class KVRowOperation extends AbstractLogiclet{
 			ExecuteWatcher watcher) {
 		KeyValueRow r = ctx.getObject(pid);
 		if (r == null){
-			throw new ServantException("core.no_row","It must be in a kvRow context,check your script.");
+			throw new BaseException("core.no_row","It must be in a kvRow context,check your script.");
 		}
 		
 		if (StringUtils.isNotEmpty(id)){
