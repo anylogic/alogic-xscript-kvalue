@@ -1,0 +1,42 @@
+<?xml version="1.0"?>
+<script>
+	<using xmlTag = "kv-row" module="com.alogic.xscript.kvalue.KVRow"/>
+	
+	<!-- 打开 -->
+	<kv-row schema="demo" table="list" key="test">
+
+		<!-- 从左边插入单个值 -->
+		<kv-llpush item="alogic"/>
+		<!-- 提取到data1 -->
+		<kv-litems tag="data1"/>
+		
+		<!-- 从左边插入多个值 -->
+		<kv-llpush item="alogic;ketty;jetty" delimeter=";"/>
+		<!-- 提取到data2 -->
+		<kv-litems tag="data2"/>
+		
+		<!-- 从右边插入多个值 -->
+		<kv-lrpush item="tom;harry;jerry" delimeter=";"/>
+		<!-- 提取到data3 -->
+		<kv-litems tag="data3"/>
+				
+		<!-- 提取部分到data -->
+		<kv-litems tag="data" start="3" stop="10"/>
+		
+		<!-- 当前列表长度是多少 -->
+		<kv-llen/>
+		<log msg="The length is ${$kv-llen}"/>
+		
+		<!-- 设置指定位置的值 -->
+		<kv-lset index="1" value="young"/>
+		<!-- 提取到data4 -->
+		<kv-litems tag="data4"/>
+		
+		<kv-lget index="1"/>
+		<log msg="The value at 1 is ${$kv-lget}"/>
+				
+		<!-- 本次测试完成，删除 -->
+		<kv-del/>		
+	</kv-row>
+	
+</script>

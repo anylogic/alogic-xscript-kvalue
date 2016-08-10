@@ -2,10 +2,10 @@
   <modelVersion>4.0.0</modelVersion>
   <groupId>com.github.alogic.plugins</groupId>
   <artifactId>alogic-xscript-kvalue</artifactId>
-  <version>0.0.1-SNAPSHOT</version>
+  <version>1.6.5-SNAPSHOT</version>
 	<properties>
 		<project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
-		<alogic.version>1.6.5-SNAPSHOT</alogic.version>
+		<alogic.version>1.6.5</alogic.version>
 	</properties>
 	<dependencies>
 		<dependency>

@@ -10,6 +10,12 @@ import com.alogic.xscript.kvalue.hash.KVHMGet;
 import com.alogic.xscript.kvalue.hash.KVHMSet;
 import com.alogic.xscript.kvalue.hash.KVHSet;
 import com.alogic.xscript.kvalue.hash.KVHValues;
+import com.alogic.xscript.kvalue.list.KVLGet;
+import com.alogic.xscript.kvalue.list.KVLItems;
+import com.alogic.xscript.kvalue.list.KVLLPush;
+import com.alogic.xscript.kvalue.list.KVLLength;
+import com.alogic.xscript.kvalue.list.KVLRPush;
+import com.alogic.xscript.kvalue.list.KVLSet;
 import com.alogic.xscript.kvalue.string.KVAppend;
 import com.alogic.xscript.kvalue.string.KVGet;
 import com.alogic.xscript.kvalue.string.KVSet;
@@ -55,6 +61,16 @@ public class KVNS extends Segment {
 		registerModule("kv-hmget",KVHMGet.class);
 		registerModule("kv-hmset",KVHMSet.class);
 		registerModule("kv-hexist",KVHExist.class);
+		
+		/**
+		 * list
+		 */
+		registerModule("kv-llen",KVLLength.class);
+		registerModule("kv-litems",KVLItems.class);
+		registerModule("kv-llpush",KVLLPush.class);
+		registerModule("kv-lrpush",KVLRPush.class);
+		registerModule("kv-lget",KVLGet.class);
+		registerModule("kv-lset",KVLSet.class);
 	}
 
 }

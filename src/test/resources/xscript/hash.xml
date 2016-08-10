@@ -32,6 +32,9 @@
 		
 		<!-- 当前有哪些values -->
 		<kv-hvals tag="vals"/>
+		
+		<!-- 本次测试完成，删除 -->
+		<kv-del/>
 	</kv-row>
 	
 </script>
