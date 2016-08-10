@@ -29,9 +29,15 @@ alogic-xscript-kvalue插件包括：
 	- [获取当前列表长度kv-llen](plugins/kv-llen.md)
 	- [从左边push到列表kv-llpush](plugins/kv-llpush.md)
 	- [从右边push到列表kv-lrpush](plugins/kv-lrpush.md)
-	- [获取指定范围的元素列表](plugins/kv-litems.md)
-	- [获取指定位置的元素](plugins/kv-lget.md)
-	- [设置指定位置的元素](plugins/kv-lset.md)
+	- [获取指定范围的元素列表kv-litems](plugins/kv-litems.md)
+	- [获取指定位置的元素kv-lget](plugins/kv-lget.md)
+	- [设置指定位置的元素kv-lset](plugins/kv-lset.md)
+	- [从指定的元素位置插入新的元素kv-linsert](plugins/kv-linsert.md) (开发中..)
+	- [从左边移除并返回头元素kv-llpop](plugins/kv-llpop.md) (开发中..)
+	- [从右边移除并返回头元素kv-lrpop](plugins/kv-lrpop.md) (开发中..)
+	- [从列表中移除指定的元素kv-lrm](plugins/kv-lrm.md) (开发中..)
+	- [剪裁不在指定区域的元素kv-trim](plugins/kv-trim.md) (开发中..)
+	
 - SortedSet类型的操作(开发中...)
 - Set类型的操作(开发中)
 
