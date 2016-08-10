@@ -108,5 +108,6 @@ alogic-xscript-kvalue是基于xscript2.0的kvalue插件，提供了使用kvalue�
 参见[alogic-xscript-rest参考](src/docs/reference.md)。
 
 ### 版本历史
-    - 0.0.1 [20160804 duanyy]
-		+ 初次发布
+
+- 0.0.1 [20160804 duanyy]
+	+ 初次发布

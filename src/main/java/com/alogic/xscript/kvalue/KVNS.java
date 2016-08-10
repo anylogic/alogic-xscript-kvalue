@@ -2,6 +2,7 @@ package com.alogic.xscript.kvalue;
 
 import com.alogic.xscript.Logiclet;
 import com.alogic.xscript.kvalue.hash.KVHDel;
+import com.alogic.xscript.kvalue.hash.KVHExist;
 import com.alogic.xscript.kvalue.hash.KVHGet;
 import com.alogic.xscript.kvalue.hash.KVHGetAll;
 import com.alogic.xscript.kvalue.hash.KVHKeys;
@@ -53,6 +54,7 @@ public class KVNS extends Segment {
 		registerModule("kv-hset",KVHSet.class);
 		registerModule("kv-hmget",KVHMGet.class);
 		registerModule("kv-hmset",KVHMSet.class);
+		registerModule("kv-hexist",KVHExist.class);
 	}
 
 }

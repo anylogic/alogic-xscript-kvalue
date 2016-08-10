@@ -14,7 +14,7 @@ import com.logicbus.kvalue.core.HashRow;
 import com.logicbus.kvalue.core.KeyValueRow;
 
 public class KVHMGet extends KVRowOperation {
-	protected String keys = "";
+	protected String key = "";
 	protected String delimeter = ";";
 	protected String tag = "data";
 	
@@ -27,7 +27,7 @@ public class KVHMGet extends KVRowOperation {
 		super.configure(p);
 		
 		tag = PropertiesConstants.getRaw(p,"tag",tag);
-		keys = PropertiesConstants.getRaw(p,"keys",keys);
+		key = PropertiesConstants.getRaw(p,"key",key);
 		delimeter = PropertiesConstants.getString(p,"delimiter",delimeter,true);
 	}
 	
@@ -38,7 +38,7 @@ public class KVHMGet extends KVRowOperation {
 
 		if (StringUtils.isNotEmpty(tagValue) && row instanceof HashRow) {
 			HashRow r = (HashRow) row;
-			String keyList = ctx.transform(keys);
+			String keyList = ctx.transform(key);
 			
 			current.put(tagValue,r.mget(keyList.split(delimeter)));
 		}

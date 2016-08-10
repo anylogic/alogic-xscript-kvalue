@@ -15,7 +15,7 @@ alogic-xscript-kvalue插件包括：
 	- [设置值kv-set](plugins/kv-set.md)
 	- [设置范围值kv-setrange](plugins/kv-setrange.md)
 	- [获取取值的字符串长度kv-strlen](plugins/kv-strlen.md)
-- Hash类型的操作
+- Hash类型的操作[查看案例](plugins/case.hash.md)
 	- [删除指定的field值kv-hdel](plugins/kv-hdel.md)
 	- [指定的field是否存在kv-hexist](plugins/kv-hexist.md)
 	- [获取指定field的值kv-hget](plugins/kv-hget.md)

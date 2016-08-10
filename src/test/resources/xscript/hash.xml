@@ -4,15 +4,34 @@
 	
 	<!-- 打开 -->
 	<kv-row schema="demo" table="hash" key="test">
-		<kv-hmset values="id;alogic;name;ketty;note;it's a web server"/>
-				
-		<kv-hset key="address" value="192.168.1.23"/>
-			
-		<kv-hget key="note"/>
-				
-		<kv-hmget tag="mget" keys="id;name"/>
-				
-		<kv-hgetall tag="getall"/>
+		<!-- 设置一个field的值 -->
+		<kv-hset key="id" value="alogic"/>
+		<!-- 列出当前所有field到 -->
+		<kv-hgetall tag="data1"/>
+		
+		<!-- 设置多个field的值 -->
+		<kv-hmset values="name;ketty;note;it's a web server;address;localhost"/>
+		<!-- 列出当前所有field到 -->
+		<kv-hgetall tag="data2"/>				
+		
+		<!-- 获取指定field的值 -->			
+		<kv-hget id="note" key="note"/>
+		<log msg="the value of note is ${note}"/>
+		
+		<!-- 删除指定的field -->
+		<kv-hdel key="note"/>	
+		<!-- 列出当前所有field到 -->
+		<kv-hgetall tag="data3"/>	
+
+		<!-- 已经删除的field是否存在 -->
+		<kv-hexist key="note"/>
+		<log msg="Does note exist? ${$kv-hexist} "/>
+
+		<!-- 当前有哪些keys -->
+		<kv-hkeys tag="keys"/>
+		
+		<!-- 当前有哪些values -->
+		<kv-hvals tag="vals"/>
 	</kv-row>
 	
 </script>

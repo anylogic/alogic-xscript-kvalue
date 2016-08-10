@@ -16,7 +16,7 @@ com.alogic.xscript.kvalue.string.KVSet
 | 编号 | 代码 | 说明 |
 | ---- | ---- | ---- |
 | 1 | pid | row的上下文对象id,缺省为$kv-row |
-| 2 | id | 操作返回变量id,缺省为$kv-exist |
+| 2 | id | 操作返回变量id,缺省为$kv-set |
 | 3 | value | 待设置的值 |
 | 4 | ttl | 本行的生命周期,缺省为0 | 
 | 5 | writeIfExist | 如果行存在，才写入，缺省为false |

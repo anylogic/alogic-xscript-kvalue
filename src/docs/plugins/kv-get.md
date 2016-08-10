@@ -16,7 +16,7 @@ com.alogic.xscript.kvalue.string.KVGet
 | 编号 | 代码 | 说明 |
 | ---- | ---- | ---- |
 | 1 | pid | row的上下文对象id,缺省为$kv-row |
-| 2 | id | 操作返回变量id,缺省为$kv-exist |
+| 2 | id | 操作返回变量id,缺省为$kv-get |
 | 3 | dft | 缺省值，当该row不存在时，以缺省值返回 |
 
 ### 案例
