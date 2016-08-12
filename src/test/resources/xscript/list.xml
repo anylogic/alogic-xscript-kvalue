@@ -32,8 +32,41 @@
 		<!-- 提取到data4 -->
 		<kv-litems tag="data4"/>
 		
+		<!-- 将值 item 插入到列表当中，位于值 pivot 之前或之后 -->
+		<kv-linsert pivot="harry" item="testlinsertBefore" insertAfter="false" />
+		<log msg="testlinsertBefore result is ${$kv-linsert}"/>
+		<!-- 提取到data4 -->
+		<kv-litems tag="data5"/>
+		
+		<!-- 将值 item 插入到列表当中，位于值 pivot 之前或之后 -->
+		<kv-linsert pivot="harry" item="testlinsertAfter" insertAfter="true" />
+		<log msg="testlinsertAfter result is ${$kv-linsert}"/>
+		<!-- 提取到data6 -->
+		<kv-litems tag="data6"/>
+		
+		<!-- 移除并返回列表 的头元素-->
+		<kv-llpop block="true" />
+		<log msg="kv-llpop result is ${$kv-llpop}"/>
+		<!-- 移除并返回列表 的尾元素-->
+		<kv-lrpop block="true"/>
+		<log msg="kv-lrpop result is ${$kv-lrpop}"/>
+		<kv-litems tag="data7"/>
+		
+		<!-- 移除并返回列表 的尾元素-->
+		<kv-lrem item="alogic" count="3"/>
+		<log msg="kv-lrem result is ${$kv-lrem}"/>
+		<kv-litems tag="data8"/>
+		
+		<!-- 对列表进行修剪 -->
+		<kv-ltrim start="1" end="-2"/>
+		<log msg="kv-ltrim result is ${$kv-ltrim}"/>
+		<kv-litems tag="data9"/>
+
+		
 		<kv-lget index="1"/>
 		<log msg="The value at 1 is ${$kv-lget}"/>
+		
+		
 				
 		<!-- 本次测试完成，删除 -->
 		<kv-del/>		
