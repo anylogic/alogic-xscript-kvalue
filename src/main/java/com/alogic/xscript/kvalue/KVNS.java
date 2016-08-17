@@ -26,6 +26,17 @@ import com.alogic.xscript.kvalue.string.KVGet;
 import com.alogic.xscript.kvalue.string.KVSet;
 import com.alogic.xscript.kvalue.string.KVSetRange;
 import com.alogic.xscript.kvalue.string.KVStrlen;
+import com.alogic.xscript.kvalue.zset.KVZAdd;
+import com.alogic.xscript.kvalue.zset.KVZCard;
+import com.alogic.xscript.kvalue.zset.KVZCount;
+import com.alogic.xscript.kvalue.zset.KVZIncrby;
+import com.alogic.xscript.kvalue.zset.KVZRange;
+import com.alogic.xscript.kvalue.zset.KVZRangeWithScore;
+import com.alogic.xscript.kvalue.zset.KVZRank;
+import com.alogic.xscript.kvalue.zset.KVZRem;
+import com.alogic.xscript.kvalue.zset.KVZRemrangeByRank;
+import com.alogic.xscript.kvalue.zset.KVZRemrangeByScore;
+import com.alogic.xscript.kvalue.zset.KVZScore;
 import com.alogic.xscript.plugins.Segment;
 
 /**
@@ -81,6 +92,22 @@ public class KVNS extends Segment {
 		registerModule("kv-lrpop",KVLRPop.class);
 		registerModule("kv-lrem",KVLRem.class);
 		registerModule("kv-ltrim",KVLTrim.class);
+		
+		/**
+		 * sortedSet
+		 */
+		registerModule("kv-zadd",KVZAdd.class);
+		registerModule("kv-zcard",KVZCard.class);
+		registerModule("kv-zcount",KVZCount.class);
+		registerModule("kv-zincrby",KVZIncrby.class);
+		registerModule("kv-zrange",KVZRange.class);
+		registerModule("kv-zrangewithscore",KVZRangeWithScore.class);
+		registerModule("kv-zrank",KVZRank.class);
+		registerModule("kv-zrem",KVZRem.class);
+		registerModule("kv-zemrangebyrank",KVZRemrangeByRank.class);
+		registerModule("kv-zemrangebyscore",KVZRemrangeByScore.class);
+		registerModule("kv-zscore",KVZScore.class);
+
 	}
 
 }
