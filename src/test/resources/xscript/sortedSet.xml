@@ -26,10 +26,10 @@
 		<kv-zrank item="nihao" reverse="true"/>
 		<log msg="The kv-zrank reverse is ${$kv-zrank}"/>
 		
-		<kv-zemrangebyscore min="0" max="3"/>
+		<kv-zremrangebyscore min="0" max="3"/>
 		<kv-zrange start="0" end="-1" withscores="false" reverse="false" tag="data4"/>
 		
-		<kv-zemrangebyrank start="0" end="1"/>
+		<kv-zremrangebyrank start="0" end="1"/>
 		<kv-zrange start="0" end="1" withscores="false" reverse="false" tag="data5"/>
 		
 		<kv-zrem item="notexist"/>

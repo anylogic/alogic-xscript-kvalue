@@ -41,6 +41,8 @@ public class Demo {
 		run("java:///xscript/string.xml#Demo",settings);
 		run("java:///xscript/hash.xml#Demo",settings);
 		run("java:///xscript/list.xml#Demo",settings);
+		run("java:///xscript/sortedSet.xml#Demo",settings);
+		run("java:///xscript/set.xml#Demo",settings);
 	}
 
 }

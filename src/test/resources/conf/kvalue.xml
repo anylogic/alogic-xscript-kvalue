@@ -37,6 +37,14 @@
 							<partition case="0" src="redis0"/>
 						</partitions>
 					</partitioner>									 
+				</table>
+				<table name="set" possessive="false" dataType="Set">
+					<partitioner module="com.logicbus.kvalue.common.SimpleHash" nodesCnt="1">
+						<partition src="redis0"/>
+						<partitions>
+							<partition case="0" src="redis0"/>
+						</partitions>
+					</partitioner>									 
 				</table>										
 			</redis.tables>
 		</schema>

@@ -38,6 +38,7 @@ import com.alogic.xscript.kvalue.zset.KVZRemrangeByRank;
 import com.alogic.xscript.kvalue.zset.KVZRemrangeByScore;
 import com.alogic.xscript.kvalue.zset.KVZScore;
 import com.alogic.xscript.plugins.Segment;
+import com.alogic.xscript.kvalue.set.*;
 
 /**
  * KeyValue相关xscript插件的namespace
@@ -104,9 +105,26 @@ public class KVNS extends Segment {
 		registerModule("kv-zrangewithscore",KVZRangeWithScore.class);
 		registerModule("kv-zrank",KVZRank.class);
 		registerModule("kv-zrem",KVZRem.class);
-		registerModule("kv-zemrangebyrank",KVZRemrangeByRank.class);
-		registerModule("kv-zemrangebyscore",KVZRemrangeByScore.class);
+		registerModule("kv-zremrangebyrank",KVZRemrangeByRank.class);
+		registerModule("kv-zremrangebyscore",KVZRemrangeByScore.class);
 		registerModule("kv-zscore",KVZScore.class);
+		
+		/**
+		 * set
+		 */
+		registerModule("kv-sadd",KVSAdd.class);
+		registerModule("kv-scard",KVSCard.class);
+		registerModule("kv-sdiff",KVSDiff.class);
+		registerModule("kv-sdiffstore",KVSDiffStore.class);
+		registerModule("kv-sinter",KVSInter.class);
+		registerModule("kv-sinterstore",KVSInterStore.class);
+		registerModule("kv-sismember",KVSIsMember.class);
+		registerModule("kv-smembers",KVSMembers.class);
+		registerModule("kv-spop",KVSPop.class);
+		registerModule("kv-srandmember",KVSRandMember.class);
+		registerModule("kv-srem",KVSRem.class);		
+		registerModule("kv-sunion",KVSUnion.class);
+		registerModule("kv-sunionstore",KVSUnionStore.class);
 
 	}
 
