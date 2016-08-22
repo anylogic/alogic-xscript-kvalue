@@ -31,7 +31,7 @@ sortedset类型操作案例
 			<kv-zcount min="0" max="3"/>
 			<log msg="The kv-zcount length is ${$kv-zcount}"/>
 			
-			<kv-zincrby item="alogic" score="100"/>
+			<kv-zincrby item="alogic" increment="100"/>
 			<log msg="The kv-zincrby score is ${$kv-zincrby}"/>
 			<kv-zrange start="0" end="15" withscores="true" reverse="true" tag="data3"/>
 			
