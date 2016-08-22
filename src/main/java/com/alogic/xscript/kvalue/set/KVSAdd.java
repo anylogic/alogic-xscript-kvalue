@@ -10,7 +10,6 @@ import com.anysoft.util.Properties;
 import com.anysoft.util.PropertiesConstants;
 import com.logicbus.kvalue.core.KeyValueRow;
 import com.logicbus.kvalue.core.SetRow;
-import com.logicbus.kvalue.core.SortedSetRow;
 
 /**将一个或多个 item 元素加入到集合 key 当中，已经存在于集合的 item 元素将被忽略。
  * 

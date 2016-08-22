@@ -16,7 +16,7 @@ com.alogic.xscript.kvalue.list.KVLRpop
 | 编号 | 代码 | 说明 |
 | ---- | ---- | ---- |
 | 1 | pid | row的上下文对象id,缺省为$kv-row |
-| 2 | id | 操作返回变量id,缺省为$kv-linsert |
+| 2 | id | 操作返回变量id,缺省为$kv-lrpop |
 | 3 | block | 是否支持阻塞等待,支持计算,缺省为false |
 
 

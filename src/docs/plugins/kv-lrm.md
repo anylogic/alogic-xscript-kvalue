@@ -21,7 +21,7 @@ com.alogic.xscript.kvalue.list.KVLRem
 | 编号 | 代码 | 说明 |
 | ---- | ---- | ---- |
 | 1 | pid | row的上下文对象id,缺省为$kv-row |
-| 2 | id | 操作返回变量id,缺省为$kv-linsert |
+| 2 | id | 操作返回变量id,缺省为$kv-lrm |
 | 3 | count | 移除的元素数量,支持计算,缺省为1|
 
 

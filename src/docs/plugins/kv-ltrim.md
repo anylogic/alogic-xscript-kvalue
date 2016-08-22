@@ -1,4 +1,4 @@
-kv-lrm.md
+kv-ltrim.md
 =======
 
 对一个列表进行修剪(trim)，就是说，让列表只保留指定区间内的元素，不在指定区间之内的元素都将被删除。
@@ -17,7 +17,7 @@ com.alogic.xscript.kvalue.list.KVLTrim
 | 编号 | 代码 | 说明 |
 | ---- | ---- | ---- |
 | 1 | pid | row的上下文对象id,缺省为$kv-row |
-| 2 | id | 操作返回变量id,缺省为$kv-linsert |
+| 2 | id | 操作返回变量id,缺省为$kv-ltrim |
 | 3 | start | 指定区间的开始下标,支持计算,缺省为0|
 | 4 | end | 指定区间的结束下标,支持计算,缺省为-1|
 
