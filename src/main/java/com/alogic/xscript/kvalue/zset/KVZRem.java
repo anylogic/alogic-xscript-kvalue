@@ -2,8 +2,6 @@ package com.alogic.xscript.kvalue.zset;
 
 import java.util.Map;
 
-import org.apache.commons.lang3.StringUtils;
-
 import com.alogic.xscript.ExecuteWatcher;
 import com.alogic.xscript.Logiclet;
 import com.alogic.xscript.LogicletContext;
@@ -21,7 +19,7 @@ import com.logicbus.kvalue.core.SortedSetRow;
 public class KVZRem extends KVRowOperation {
 
 	protected String item = "";
-	protected String delimeter = "";
+	protected String delimeter = ";";
 
 	public KVZRem(String tag, Logiclet p) {
 		super(tag, p);
@@ -40,16 +38,9 @@ public class KVZRem extends KVRowOperation {
 			LogicletContext ctx, ExecuteWatcher watcher) {
 
 		String items = ctx.transform(item);
-		if (row instanceof SortedSetRow) {
-			
-			String[] _items=new String[]{items};
-			String _delimeter=ctx.transform(delimeter);
-			if(StringUtils.isNotBlank(_delimeter)){
-				_items = items.split(delimeter);
-			}
-			
+		if (row instanceof SortedSetRow) {	
 			SortedSetRow r = (SortedSetRow) row;
-			ctx.SetValue(id, String.valueOf(r.remove(_items)));
+			ctx.SetValue(id, String.valueOf(r.remove(items.split(delimeter))));
 		}
 		
 	}

@@ -11,15 +11,15 @@ import com.anysoft.util.PropertiesConstants;
 import com.logicbus.kvalue.core.KeyValueRow;
 import com.logicbus.kvalue.core.SortedSetRow;
 
-public class KVZRangeWithScore extends KVRowOperation {
+public class KVZRangeByScore extends KVRowOperation {
 
 	protected String min = "0";
-	protected String max = "100";
+	protected String max = "150";
 	protected String withscores = "false";
 	protected String reverse = "false";
 	protected String tag = "data";
 
-	public KVZRangeWithScore(String tag, Logiclet p) {
+	public KVZRangeByScore(String tag, Logiclet p) {
 		super(tag, p);
 	}
 

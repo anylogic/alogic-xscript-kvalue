@@ -14,7 +14,7 @@ import com.logicbus.kvalue.core.SortedSetRow;
 public class KVZRange extends KVRowOperation {
 
 	protected String start = "0";
-	protected String end = "100";
+	protected String end = "150";
 	protected String withscores = "false";
 	protected String reverse = "false";
 	protected String tag = "data";

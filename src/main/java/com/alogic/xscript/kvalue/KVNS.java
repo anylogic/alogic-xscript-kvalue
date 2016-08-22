@@ -31,7 +31,7 @@ import com.alogic.xscript.kvalue.zset.KVZCard;
 import com.alogic.xscript.kvalue.zset.KVZCount;
 import com.alogic.xscript.kvalue.zset.KVZIncrby;
 import com.alogic.xscript.kvalue.zset.KVZRange;
-import com.alogic.xscript.kvalue.zset.KVZRangeWithScore;
+import com.alogic.xscript.kvalue.zset.KVZRangeByScore;
 import com.alogic.xscript.kvalue.zset.KVZRank;
 import com.alogic.xscript.kvalue.zset.KVZRem;
 import com.alogic.xscript.kvalue.zset.KVZRemrangeByRank;
@@ -102,7 +102,7 @@ public class KVNS extends Segment {
 		registerModule("kv-zcount",KVZCount.class);
 		registerModule("kv-zincrby",KVZIncrby.class);
 		registerModule("kv-zrange",KVZRange.class);
-		registerModule("kv-zrangewithscore",KVZRangeWithScore.class);
+		registerModule("kv-zrangebyscore",KVZRangeByScore.class);
 		registerModule("kv-zrank",KVZRank.class);
 		registerModule("kv-zrem",KVZRem.class);
 		registerModule("kv-zremrangebyrank",KVZRemrangeByRank.class);

@@ -11,17 +11,15 @@ import com.anysoft.util.PropertiesConstants;
 import com.logicbus.kvalue.core.KeyValueRow;
 import com.logicbus.kvalue.core.SortedSetRow;
 
-/**ZADD key score member [[score member] [score member] ...] </br>
- *将一个或多个 member 元素及其 score 值加入到有序集 key 当中。  </br>
- *如果某个 member 已经是有序集的成员，那么更新这个 member 的 score 值，并通过重新插入这个 member 元素，来保证该 member 在正确的位置上</br>
- * 
+/**为有序集 key 的成员 item 的 score 值加上增量 increment 。
+ * 返回成员的新 score 值
  * @author zhongyi
  *
  */
 public class KVZIncrby extends KVRowOperation {
 
 	protected String item = "";
-	protected String score = "0";
+	protected String increment = "0";
 
 
 	public KVZIncrby(String tag, Logiclet p) {
@@ -32,7 +30,7 @@ public class KVZIncrby extends KVRowOperation {
 	public void configure(Properties p) {
 		super.configure(p);
 		item = PropertiesConstants.getRaw(p, "item", item);
-		score = PropertiesConstants.getRaw(p, "score", score);
+		increment = PropertiesConstants.getRaw(p, "increment", increment);
 
 
 	}
@@ -44,7 +42,7 @@ public class KVZIncrby extends KVRowOperation {
 		if (row instanceof SortedSetRow) {
 
 			SortedSetRow r = (SortedSetRow) row;
-			ctx.SetValue(id, String.valueOf(r.incr(ctx.transform(item), getDouble(ctx.transform(score), 0d))));
+			ctx.SetValue(id, String.valueOf(r.incr(ctx.transform(item), getDouble(ctx.transform(increment), 0d))));
 		}
 
 	}
