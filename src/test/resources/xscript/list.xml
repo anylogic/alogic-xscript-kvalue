@@ -33,13 +33,13 @@
 		<kv-litems tag="data4"/>
 		
 		<!-- 将值 item 插入到列表当中，位于值 pivot 之前或之后 -->
-		<kv-linsert pivot="harry" item="testlinsertBefore" insertAfter="false" />
+		<kv-linsert pivot="harry" value="testlinsertBefore" insertAfter="false" />
 		<log msg="testlinsertBefore result is ${$kv-linsert}"/>
 		<!-- 提取到data4 -->
 		<kv-litems tag="data5"/>
 		
 		<!-- 将值 item 插入到列表当中，位于值 pivot 之前或之后 -->
-		<kv-linsert pivot="harry" item="testlinsertAfter" insertAfter="true" />
+		<kv-linsert pivot="harry" value="testlinsertAfter" insertAfter="true" />
 		<log msg="testlinsertAfter result is ${$kv-linsert}"/>
 		<!-- 提取到data6 -->
 		<kv-litems tag="data6"/>
@@ -53,7 +53,7 @@
 		<kv-litems tag="data7"/>
 		
 		<!-- 移除并返回列表 的尾元素-->
-		<kv-lrem item="alogic" count="3"/>
+		<kv-lrem value="alogic" count="3"/>
 		<log msg="kv-lrem result is ${$kv-lrem}"/>
 		<kv-litems tag="data8"/>
 		

@@ -21,7 +21,7 @@ count = 0 : 移除表中所有与 VALUE 相等的值<br/>
  */
 public class KVLRem extends KVRowOperation{
 
-	protected String item = "";
+	protected String value = "";
 	/**
 	 * 
 	 */
@@ -34,17 +34,16 @@ public class KVLRem extends KVRowOperation{
 	@Override
 	public void configure(Properties p){
 		super.configure(p);
-		item = PropertiesConstants.getRaw(p,"item",item);
+		value = PropertiesConstants.getRaw(p,"value",value);
 		count = PropertiesConstants.getRaw(p,"count",count);		
 	}
 	
 	@Override
 	protected void onExecute(KeyValueRow row, Map<String, Object> root, Map<String, Object> current,
 			LogicletContext ctx, ExecuteWatcher watcher) {
-		String value = ctx.transform(item);
 		if (row instanceof ListRow) {
 			ListRow r = (ListRow) row;
-			ctx.SetValue(id, String.valueOf(r.remove(value,  getLong(ctx.transform(count),1))));
+			ctx.SetValue(id, String.valueOf(r.remove(ctx.transform(value),  getLong(ctx.transform(count),1))));
 		}
 		
 	}

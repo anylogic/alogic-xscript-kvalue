@@ -21,7 +21,7 @@ import com.logicbus.kvalue.core.ListRow;
  */
 public class KVLInsert extends KVRowOperation {
 
-	protected String item = "";
+	protected String value = "";
 	/**
 	 * 参照值；会在参照值前或后插入新的值
 	 */
@@ -36,7 +36,7 @@ public class KVLInsert extends KVRowOperation {
 	@Override
 	public void configure(Properties p) {
 		super.configure(p);
-		item = PropertiesConstants.getRaw(p, "item", item);
+		value = PropertiesConstants.getRaw(p, "value", value);
 		insertAfter = PropertiesConstants.getRaw(p, "insertAfter", insertAfter);
 		pivot = PropertiesConstants.getRaw(p, "pivot", pivot);
 	}
@@ -44,11 +44,10 @@ public class KVLInsert extends KVRowOperation {
 	@Override
 	protected void onExecute(KeyValueRow row, Map<String, Object> root, Map<String, Object> current,
 			LogicletContext ctx, ExecuteWatcher watcher) {
-		String value = ctx.transform(item);
 		if (row instanceof ListRow) {
 			ListRow r = (ListRow) row;
 			String result=String
-					.valueOf(r.insert(ctx.transform(pivot), value, getBoolean(ctx.transform(insertAfter), false)));
+					.valueOf(r.insert(ctx.transform(pivot), ctx.transform(value), getBoolean(ctx.transform(insertAfter), false)));
 			ctx.SetValue(id, result);
 		}
 	}
