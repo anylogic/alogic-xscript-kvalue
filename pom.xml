@@ -1,8 +1,7 @@
 <project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
   <modelVersion>4.0.0</modelVersion>
-  <groupId>com.github.anylogic</groupId>
   <artifactId>alogic-xscript-kvalue</artifactId>
-  <version>1.6.5-SNAPSHOT</version>
+  <version>1.6.5-20160826</version>
 	<properties>
 		<project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
 		<alogic.version>1.6.5</alogic.version>
@@ -12,28 +11,8 @@
 			<groupId>com.github.anylogic</groupId>
 			<artifactId>alogic-kvalue</artifactId>
 			<version>${alogic.version}</version>
-			<scope>provided</scope>
-		</dependency>
-		<dependency>
-			<groupId>org.apache.httpcomponents</groupId>
-			<artifactId>httpclient</artifactId>
-			<version>4.5.2</version>
 		</dependency>
 	</dependencies>
-
-	<distributionManagement>
-		<repository>
-			<id>releases</id>
-			<name>Internal Releases</name>
-			<url>http://10.142.90.52:8002/content/repositories/releases</url>
-		</repository>
-		<snapshotRepository>
-			<id>snapshots</id>
-			<name>Internal Snapshots</name>
-			<url>http://10.142.90.52:8002/content/repositories/snapshots</url>
-		</snapshotRepository>
-	</distributionManagement>
-
 	<build>
 		<plugins>
 			<plugin>
@@ -65,4 +44,9 @@
 			</plugin>
 		</plugins>
 	</build>    
+	<parent>
+		<groupId>com.github.anylogic</groupId>
+		<artifactId>alogic</artifactId>
+		<version>1.6.5</version>
+	</parent>
 </project>
