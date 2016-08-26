@@ -34,7 +34,7 @@ public class KVZRangeByScore extends KVRowOperation {
 		min = PropertiesConstants.getRaw(p, "min", min);
 		max = PropertiesConstants.getRaw(p, "max", max);
 		withscores = PropertiesConstants.getRaw(p, "withscores", withscores);
-		reverse = PropertiesConstants.getRaw(p, "withscores", withscores);
+		reverse = PropertiesConstants.getRaw(p, "reverse", reverse);
 		tag = PropertiesConstants.getRaw(p, "tag", tag);
 	}
 
@@ -45,8 +45,18 @@ public class KVZRangeByScore extends KVRowOperation {
 		if (row instanceof SortedSetRow) {
 			SortedSetRow r = (SortedSetRow) row;
 			if(getBoolean(ctx.transform(withscores), false)){
-				List<Pair<String,Double>> l=r.rangeByScoreWithScores(getDouble(ctx.transform(min), 0), getDouble(ctx.transform(max), 150l),
-						getBoolean(ctx.transform(reverse), false));
+				
+				boolean _reverse=getBoolean(ctx.transform(reverse), false);
+				List<Pair<String,Double>> l=null;
+				if(_reverse){
+					l=r.rangeByScoreWithScores(getDouble(ctx.transform(max), 0), getDouble(ctx.transform(min), 150d),
+							_reverse);
+				}else{
+					l=r.rangeByScoreWithScores(getDouble(ctx.transform(min), 0), getDouble(ctx.transform(max), 150d),
+							_reverse);
+				}
+				
+							
 				List<Map<String,Double>> result=new ArrayList<Map<String,Double>>();
 				if(null!=l&&l.size()>0){
 					Iterator<Pair<String,Double>> ite=l.iterator();
@@ -60,11 +70,17 @@ public class KVZRangeByScore extends KVRowOperation {
 				
 				current.put(ctx.transform(tag), result);
 			}else{
-				/*List<String> l=r.range(getLong(ctx.transform(start), 0), getLong(ctx.transform(end), 150l),
-						getBoolean(ctx.transform(reverse), false));*/
+				boolean _reverse=getBoolean(ctx.transform(reverse), false);
+				List<Pair<String,Double>> l=null;
+				if(_reverse){
+					current.put(ctx.transform(tag), r.rangeByScore(getDouble(ctx.transform(max), 0), getDouble(ctx.transform(min), 150l),
+							_reverse));
+				}else{
+					current.put(ctx.transform(tag), r.rangeByScore(getDouble(ctx.transform(min), 0), getDouble(ctx.transform(max), 150l),
+							_reverse));
+				}
 		
-				current.put(ctx.transform(tag), r.rangeByScore(getDouble(ctx.transform(min), 0), getDouble(ctx.transform(max), 150l),
-						getBoolean(ctx.transform(reverse), false)));
+				
 			}
 				
 		}

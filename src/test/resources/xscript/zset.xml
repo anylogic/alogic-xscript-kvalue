@@ -19,7 +19,8 @@
 		
 		<kv-zincrby item="alogic" increment="100"/>
 		<log msg="The kv-zincrby score is ${$kv-zincrby}"/>
-		<kv-zrange start="0" end="15" withscores="true" reverse="true" tag="data3"/>
+		<kv-zrangebyscore min="0" max="150" withscores="true" reverse="false" tag="data31"/>
+		<kv-zrangebyscore min="0" max="200" withscores="true" reverse="true" tag="data32"/>
 		
 		<kv-zrank item="nihao" reverse="false"/>
 		<log msg="The kv-zrank is ${$kv-zrank}"/>
