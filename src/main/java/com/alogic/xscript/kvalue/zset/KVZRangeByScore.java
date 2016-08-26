@@ -16,6 +16,11 @@ import com.anysoft.util.PropertiesConstants;
 import com.logicbus.kvalue.core.KeyValueRow;
 import com.logicbus.kvalue.core.SortedSetRow;
 
+
+/**
+ * @author zhongyi
+ *
+ */
 public class KVZRangeByScore extends KVRowOperation {
 
 	protected String min = "0";
@@ -23,6 +28,14 @@ public class KVZRangeByScore extends KVRowOperation {
 	protected String withscores = "false";
 	protected String reverse = "false";
 	protected String tag = "data";
+	
+	
+	/**
+	 * 预留3个参数用来支持分页
+	 */
+	protected String limit="false";
+	protected String offset = "0";
+	protected String count = "10";
 
 	public KVZRangeByScore(String tag, Logiclet p) {
 		super(tag, p);
