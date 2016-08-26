@@ -10,7 +10,7 @@ set类型操作案例
 
 下面是案例内容：
 
-```
+```xml
 
 	<?xml version="1.0"?>
 	<script>
@@ -20,7 +20,6 @@ set类型操作案例
 		<kv-row schema="demo" table="set" key="test1">
 			<kv-sadd item="one;two;nihao" delimeter=";"/>
 		</kv-row>
-		
 		
 		<!-- 打开 -->
 		<kv-row schema="demo" table="set" key="test">

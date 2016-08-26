@@ -171,7 +171,7 @@ alogic-xscript-kvalue是基于xscript2.0的kvalue插件，提供了使用kvalue�
 
 ### Reference
 
-参见[alogic-xscript-rest参考](src/docs/reference.md)。
+参见[alogic-xscript-kvalue参考](src/docs/reference.md)。
 
 ### History
 

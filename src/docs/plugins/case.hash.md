@@ -10,7 +10,7 @@ hash类型操作案例
 
 下面是案例内容：
 
-```
+```xml
 
 	<?xml version="1.0"?>
 	<script>
