@@ -31,11 +31,10 @@ public class KVZRangeByScore extends KVRowOperation {
 	
 	
 	/**
-	 * 预留3个参数用来支持分页
+	 * 预留2个参数用来支持分页
 	 */
-	protected String limit="false";
 	protected String offset = "0";
-	protected String count = "10";
+	protected String count = "100";
 
 	public KVZRangeByScore(String tag, Logiclet p) {
 		super(tag, p);
