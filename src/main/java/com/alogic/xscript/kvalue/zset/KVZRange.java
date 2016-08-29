@@ -34,7 +34,7 @@ public class KVZRange extends KVRowOperation {
 	public void configure(Properties p) {
 		super.configure(p);
 		start = PropertiesConstants.getRaw(p, "start", start);
-		end = PropertiesConstants.getRaw(p, "score", end);
+		end = PropertiesConstants.getRaw(p, "end", end);
 		withscores = PropertiesConstants.getRaw(p, "withscores", withscores);
 		reverse = PropertiesConstants.getRaw(p, "reverse", reverse);
 		tag = PropertiesConstants.getRaw(p, "tag", tag);
