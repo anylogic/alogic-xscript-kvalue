@@ -13,8 +13,6 @@ import com.alogic.xscript.kvalue.KVRowOperation;
 import com.anysoft.util.Pair;
 import com.anysoft.util.Properties;
 import com.anysoft.util.PropertiesConstants;
-import com.jayway.jsonpath.spi.JsonProvider;
-import com.jayway.jsonpath.spi.JsonProviderFactory;
 import com.logicbus.kvalue.core.KeyValueRow;
 import com.logicbus.kvalue.core.SortedSetRow;
 
