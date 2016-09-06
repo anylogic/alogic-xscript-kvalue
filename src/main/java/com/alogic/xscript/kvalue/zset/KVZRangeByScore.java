@@ -13,6 +13,7 @@ import com.alogic.xscript.kvalue.KVRowOperation;
 import com.anysoft.util.Pair;
 import com.anysoft.util.Properties;
 import com.anysoft.util.PropertiesConstants;
+import com.logicbus.backend.ServantException;
 import com.logicbus.kvalue.core.KeyValueRow;
 import com.logicbus.kvalue.core.SortedSetRow;
 
@@ -48,6 +49,8 @@ public class KVZRangeByScore extends KVRowOperation {
 		withscores = PropertiesConstants.getRaw(p, "withscores", withscores);
 		reverse = PropertiesConstants.getRaw(p, "reverse", reverse);
 		tag = PropertiesConstants.getRaw(p, "tag", tag);
+		offset = PropertiesConstants.getRaw(p, "offset", offset);
+		count = PropertiesConstants.getRaw(p,"count",count);
 	}
 
 	@Override
@@ -56,6 +59,7 @@ public class KVZRangeByScore extends KVRowOperation {
 
 		if (row instanceof SortedSetRow) {
 			SortedSetRow r = (SortedSetRow) row;
+			
 			if(getBoolean(ctx.transform(withscores), false)){
 				
 				boolean _reverse=getBoolean(ctx.transform(reverse), false);
@@ -67,20 +71,36 @@ public class KVZRangeByScore extends KVRowOperation {
 					l=r.rangeByScoreWithScores(getDouble(ctx.transform(min), 0), getDouble(ctx.transform(max), 150d),
 							_reverse);
 				}
-				
-							
-				List<Map<String,Double>> result=new ArrayList<Map<String,Double>>();
-				if(null!=l&&l.size()>0){
-					Iterator<Pair<String,Double>> ite=l.iterator();
-					while(ite.hasNext()){
-						Pair<String,Double> p=ite.next();
+			    
+//				List<Map<String,Double>> result=new ArrayList<Map<String,Double>>();
+//				if(null!=l&&l.size()>0){
+//					Iterator<Pair<String,Double>> ite=l.iterator();
+//					while(ite.hasNext()){
+//						Pair<String,Double> p=ite.next();
+//						Map<String,Double> map=new HashMap<String,Double>();
+//						map.put(p.key(), p.value());
+//						result.add(map);
+//					}
+//				}
+//				
+//				current.put(ctx.transform(tag), result);
+
+				int offsetInt = getInt(ctx.transform(offset), 0);
+				int countInt = getInt(ctx.transform(count), 100);
+				if(offsetInt >= 0 && offsetInt <= l.size()){
+					List<Map<String,Double>> res=new ArrayList<Map<String,Double>>();
+					for(int i = offsetInt; (i < l.size()) && (i < (offsetInt + countInt)); ++i){
+						Pair<String,Double> p= l.get(i);
 						Map<String,Double> map=new HashMap<String,Double>();
 						map.put(p.key(), p.value());
-						result.add(map);
+						res.add(map);
 					}
+					current.put(ctx.transform(tag), res);
+				}else if(offsetInt < 0){
+					throw new ServantException("core.failed", String.format(
+							"empty list or set,offset can not be a negative!offset:%s", offset));
 				}
 				
-				current.put(ctx.transform(tag), result);
 			}else{
 				boolean _reverse=getBoolean(ctx.transform(reverse), false);
 				List<Pair<String,Double>> l=null;
@@ -90,12 +110,8 @@ public class KVZRangeByScore extends KVRowOperation {
 				}else{
 					current.put(ctx.transform(tag), r.rangeByScore(getDouble(ctx.transform(min), 0), getDouble(ctx.transform(max), 150l),
 							_reverse));
-				}
-		
-				
-			}
-				
+				}				
+			}			
 		}
-
 	}
 }
