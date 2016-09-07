@@ -22,7 +22,7 @@
 
 		<kv-zincrby item="alogic" increment="100" />
 		<log msg="The kv-zincrby score is ${$kv-zincrby}" /> -->
-		<kv-zrangebyscore min="0" max="150" withscores="true" reverse="false" tag="data31" />
+	<!-- 	<kv-zrangebyscore min="0" max="150" withscores="true" reverse="false" tag="data31" /> -->
 		<kv-zrangebyscore min="0" max="200" withscores="true"
 			reverse="false" tag="data32" mark="这是个坑，标识后面3个属性是用来支持分页；下个版本实现" limit="true" offset="1" count="3"/>
 
