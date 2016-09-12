@@ -58,21 +58,14 @@ public class KVZRangeByScore extends KVRowOperation {
 			SortedSetRow r = (SortedSetRow) row;
 			
 			if(getBoolean(ctx.transform(withscores), false)){
-				
 				boolean _reverse=getBoolean(ctx.transform(reverse), false);
 				List<Pair<String,Double>> l=null;
-			/*	if(_reverse){
-					current.put(ctx.transform(tag), r.rangeByScoreWithScores(getDouble(ctx.transform(max), 0), getDouble(ctx.transform(min), 150d),
-							_reverse, getLong(ctx.transform(offset), 0), getLong(ctx.transform(count), 100)));
-				}else{
-					current.put(ctx.transform(tag), r.rangeByScoreWithScores(getDouble(ctx.transform(min), 0), getDouble(ctx.transform(max), 150d),
-							_reverse, getLong(ctx.transform(offset), 0), getLong(ctx.transform(count), 100)));
-				}*/
+				
 				if(_reverse){
-					l=r.rangeByScoreWithScores(getDouble(ctx.transform(max), 0), getDouble(ctx.transform(min), 150d),
-							_reverse,getLong(ctx.transform(offset), 0), getLong(ctx.transform(count), 100l));
+					l=r.rangeByScoreWithScores(getDouble(ctx.transform(max), 150d), getDouble(ctx.transform(min), 0d),
+							_reverse,getLong(ctx.transform(offset), 0l), getLong(ctx.transform(count), 100l));
 				}else{
-					l=r.rangeByScoreWithScores(getDouble(ctx.transform(min), 0), getDouble(ctx.transform(max), 150d),
+					l=r.rangeByScoreWithScores(getDouble(ctx.transform(min), 0d), getDouble(ctx.transform(max), 150d),
 							_reverse,getLong(ctx.transform(offset), 0l), getLong(ctx.transform(count), 100l));
 				}
 			    
@@ -87,27 +80,10 @@ public class KVZRangeByScore extends KVRowOperation {
 					}
 				}
 				
-				current.put(ctx.transform(tag), result);
-
-/*				int offsetInt = getInt(ctx.transform(offset), 0);
-				int countInt = getInt(ctx.transform(count), 100);
-				if(offsetInt >= 0 && offsetInt <= l.size()){
-					List<Map<String,Double>> res=new ArrayList<Map<String,Double>>();
-					for(int i = offsetInt; (i < l.size()) && (i < (offsetInt + countInt)); ++i){
-						Pair<String,Double> p= l.get(i);
-						Map<String,Double> map=new HashMap<String,Double>();
-						map.put(p.key(), p.value());
-						res.add(map);
-					}
-					current.put(ctx.transform(tag), res);
-				}else if(offsetInt < 0){
-					throw new ServantException("core.failed", String.format(
-							"empty list or set,offset can not be a negative!offset:%s", offset));
-				}*/
-				
+				current.put(ctx.transform(tag), result);	
 			}else{
 				boolean _reverse=getBoolean(ctx.transform(reverse), false);
-				//List<Pair<String,Double>> l=null;
+				
 				if(_reverse){
 					current.put(ctx.transform(tag), r.rangeByScore(getDouble(ctx.transform(max), 0), getDouble(ctx.transform(min), 150l),
 							_reverse, getLong(ctx.transform(offset), 0), getLong(ctx.transform(count), 100)));
