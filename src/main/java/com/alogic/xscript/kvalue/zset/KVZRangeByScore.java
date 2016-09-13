@@ -53,20 +53,22 @@ public class KVZRangeByScore extends KVRowOperation {
 	@Override
 	protected void onExecute(KeyValueRow row, Map<String, Object> root, Map<String, Object> current,
 			LogicletContext ctx, ExecuteWatcher watcher) {
-
+		double _min = getDouble(ctx.transform(min), 0d);
+		double _max = getDouble(ctx.transform(max), 150d);
+		long _offset = getLong(ctx.transform(offset), 0l);
+		long _count = getLong(ctx.transform(count), 100l);
+		
 		if (row instanceof SortedSetRow) {
 			SortedSetRow r = (SortedSetRow) row;
+			boolean _reverse=getBoolean(ctx.transform(reverse), false);
 			
 			if(getBoolean(ctx.transform(withscores), false)){
-				boolean _reverse=getBoolean(ctx.transform(reverse), false);
 				List<Pair<String,Double>> l=null;
 				
 				if(_reverse){
-					l=r.rangeByScoreWithScores(getDouble(ctx.transform(max), 150d), getDouble(ctx.transform(min), 0d),
-							_reverse,getLong(ctx.transform(offset), 0l), getLong(ctx.transform(count), 100l));
+					l=r.rangeByScoreWithScores(_min, _max, _reverse, _offset, _count);
 				}else{
-					l=r.rangeByScoreWithScores(getDouble(ctx.transform(min), 0d), getDouble(ctx.transform(max), 150d),
-							_reverse,getLong(ctx.transform(offset), 0l), getLong(ctx.transform(count), 100l));
+					l=r.rangeByScoreWithScores(_min, _max, _reverse, _offset, _count);
 				}
 			    
 				List<Map<String,Double>> result=new ArrayList<Map<String,Double>>();
@@ -82,14 +84,12 @@ public class KVZRangeByScore extends KVRowOperation {
 				
 				current.put(ctx.transform(tag), result);	
 			}else{
-				boolean _reverse=getBoolean(ctx.transform(reverse), false);
-				
 				if(_reverse){
-					current.put(ctx.transform(tag), r.rangeByScore(getDouble(ctx.transform(max), 0), getDouble(ctx.transform(min), 150l),
-							_reverse, getLong(ctx.transform(offset), 0), getLong(ctx.transform(count), 100)));
+					current.put(ctx.transform(tag), r.rangeByScore(_min, _max,
+							_reverse, _offset, _count));
 				}else{
-					current.put(ctx.transform(tag), r.rangeByScore(getDouble(ctx.transform(min), 0), getDouble(ctx.transform(max), 150l),
-							_reverse, getLong(ctx.transform(offset), 0), getLong(ctx.transform(count), 100)));
+					current.put(ctx.transform(tag), r.rangeByScore(_min, _max,
+							_reverse, _offset, _count));
 				}
 			}			
 		}
