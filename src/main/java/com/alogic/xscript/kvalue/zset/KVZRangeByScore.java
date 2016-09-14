@@ -64,12 +64,7 @@ public class KVZRangeByScore extends KVRowOperation {
 			
 			if(getBoolean(ctx.transform(withscores), false)){
 				List<Pair<String,Double>> l=null;
-				
-				if(_reverse){
-					l=r.rangeByScoreWithScores(_min, _max, _reverse, _offset, _count);
-				}else{
-					l=r.rangeByScoreWithScores(_min, _max, _reverse, _offset, _count);
-				}
+				l=r.rangeByScoreWithScores(_min, _max, _reverse, _offset, _count);
 			    
 				List<Map<String,Double>> result=new ArrayList<Map<String,Double>>();
 				if(null!=l&&l.size()>0){
@@ -84,13 +79,8 @@ public class KVZRangeByScore extends KVRowOperation {
 				
 				current.put(ctx.transform(tag), result);	
 			}else{
-				if(_reverse){
 					current.put(ctx.transform(tag), r.rangeByScore(_min, _max,
 							_reverse, _offset, _count));
-				}else{
-					current.put(ctx.transform(tag), r.rangeByScore(_min, _max,
-							_reverse, _offset, _count));
-				}
 			}			
 		}
 	}
