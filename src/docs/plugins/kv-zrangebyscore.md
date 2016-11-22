@@ -21,9 +21,10 @@ com.alogic.xscript.kvalue.zset.KVZrangebyscore
 | 4 | max | 分值区间最大值，支持计算,缺省为"150"|
 | 5 | reverse | 是否按分值从大到小排序，支持计算,缺省为"false"|
 | 6 | withscores | 返回的成员是否包括它的分值，支持计算,缺省为"false"|
-| 7 | offset | offset 偏移位置，支持计算,缺省为"0l"|
-| 8 | count | 从偏移位置开始返回 count的数量记录，支持计算,缺省为"100l"|
-| 9 | tag | 当前文档的节点,支持计算,缺省为"data"|
+| 7 | withscore-item-type | 指定返回的成员的类型，withscore-item-type=string,返回的类型为字符串，格式如下“e:element;s:score”;withscore-item-type=map,item的类型为map,格式如下{“element”:"score"},缺省为"string"|
+| 8 | offset | offset 偏移位置，支持计算,缺省为"0l"|
+| 9 | count | 从偏移位置开始返回 count的数量记录，支持计算,缺省为"100l"|
+| 10 | tag | 当前文档的节点,支持计算,缺省为"data"|
 
 
 ### 案例

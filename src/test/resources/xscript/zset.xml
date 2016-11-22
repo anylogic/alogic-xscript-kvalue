@@ -9,27 +9,31 @@
 		<kv-zadd item="alogic;nihao;wohao;last;first" score="8.4;2;5.67;100;0"
 			delimeter=";" />
 		<!-- 提取到data1 -->
- 		<kv-zrange start="0" end="15" withscores="false" reverse="false"
+		<kv-zrange start="0" end="15" withscores="false" reverse="false"
 			tag="data1" />
 		<kv-zrange start="0" end="15" withscores="true" reverse="true"
-			tag="data2" /> -->
+			tag="data2" />
+		
 		<!-- 本次测试完成，删除 -->
 
- 		<kv-zcard />
+		<kv-zcard />
 		<log msg="The kv-zcard length is ${$kv-zcard}" />
 
 		<kv-zcount min="0" max="3" />
 		<log msg="The kv-zcount length is ${$kv-zcount}" />
 
 		<kv-zincrby item="alogic" increment="100" />
-		<log msg="The kv-zincrby score is ${$kv-zincrby}" /> -->
-	 	<kv-zrangebyscore min="0" max="150" withscores="true" reverse="false" tag="data31" />
+		<log msg="The kv-zincrby score is ${$kv-zincrby}" />
+		-->
+		<kv-zrangebyscore min="0" max="150" withscores="true"
+			reverse="false" tag="data31" withscore-item-type="map"/>
 		<kv-zrangebyscore min="0" max="200" withscores="true"
-			reverse="false" tag="data" mark="这是个坑，标识后面3个属性是用来支持分页；下个版本实现" limit="true" offset="1" count="3"/>
+			reverse="false" tag="data" mark="这是个坑，标识后面3个属性是用来支持分页；下个版本实现" limit="true"
+			offset="1" count="3" />
 
 
 
- 		<kv-zrank item="nihao" reverse="false" />
+		<kv-zrank item="nihao" reverse="false" />
 		<log msg="The kv-zrank is ${$kv-zrank}" />
 		<kv-zrank item="nihao" reverse="true" />
 		<log msg="The kv-zrank reverse is ${$kv-zrank}" />
@@ -51,4 +55,22 @@
 		<kv-del />
 	</kv-row>
 
+	<kv-row schema="demo" table="zset" key="testlex">
+		<!-- 从左边插入单个值 -->
+		<kv-zadd item="alogic;akdss;nihao;wohao;last;first" score="0;0;0;0;0;0"
+			delimeter=";" />
+		<kv-zrangebylex min="-" max="[an" tag="datalex1" offset="0" count="10"/>
+		<kv-zrangebylex min="[al" max="[an" tag="datalex2" offset="0" count="10"/>
+
+		<kv-zlexcount min="-" max="+"/>
+		<log msg="The all is ${$kv-zlexcount}" />
+
+		<kv-zlexcount min="[al" max="[an"/>
+		<log msg="The special is ${$kv-zlexcount}" />
+		
+		<kv-zremrangebylex min="[al" max="[an"/>
+		<kv-zrangebylex min="-" max="+" tag="datalex3" offset="0" count="10"/>
+		
+		<kv-del />
+	</kv-row>
 </script>

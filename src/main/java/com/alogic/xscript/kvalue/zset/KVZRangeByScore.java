@@ -27,6 +27,12 @@ public class KVZRangeByScore extends KVRowOperation {
 	protected String withscores = "false";
 	protected String reverse = "false";
 	protected String tag = "data";
+
+	/**
+	 * withscores=true,本参数才生效,用来指定结果集中每个元素的返回格式。withscoreItemType=string,返回的类型为字符串，格式如下“e:element;s:score”;
+	 * withscoreItemType=map,item的类型为map,格式如下{“element”:"score"}
+	 */
+	protected String withscoreItemType = "string";
 	
 	/**
 	 * 预留2个参数用来支持分页
@@ -48,6 +54,7 @@ public class KVZRangeByScore extends KVRowOperation {
 		tag = PropertiesConstants.getRaw(p, "tag", tag);
 		offset = PropertiesConstants.getRaw(p, "offset", offset);
 		count = PropertiesConstants.getRaw(p,"count",count);
+		withscoreItemType=PropertiesConstants.getRaw(p,"withscore-item-type",withscoreItemType);
 	}
 
 	@Override
@@ -58,6 +65,7 @@ public class KVZRangeByScore extends KVRowOperation {
 		long _offset = getLong(ctx.transform(offset), 0l);
 		long _count = getLong(ctx.transform(count), 100l);
 		
+		
 		if (row instanceof SortedSetRow) {
 			SortedSetRow r = (SortedSetRow) row;
 			boolean _reverse=getBoolean(ctx.transform(reverse), false);
@@ -66,18 +74,25 @@ public class KVZRangeByScore extends KVRowOperation {
 				List<Pair<String,Double>> l=null;
 				l=r.rangeByScoreWithScores(_min, _max, _reverse, _offset, _count);
 			    
-				List<String> result=new ArrayList<String>();
+				List result=new ArrayList();
 				if(null!=l&&l.size()>0){
 					Iterator<Pair<String,Double>> ite=l.iterator();
 					while(ite.hasNext()){
 						Pair<String,Double> p=ite.next();
-						StringBuffer eleWithScore=new StringBuffer("e:");
-						eleWithScore.append(p.key()+";s:").append(p.value());
-						result.add(eleWithScore.toString());
+						if("map".equals(withscoreItemType)){
+							HashMap<String,Double> item = new HashMap<>();
+							item.put(p.key(), p.value());
+							result.add(item);
+						}else{
+							
+							StringBuffer eleWithScore=new StringBuffer("e:");
+							eleWithScore.append(p.key()+";s:").append(p.value());
+							result.add(eleWithScore.toString());
+						}
+						
 					}
 				}
-				
-				
+								
 				current.put(ctx.transform(tag), result);	
 			}else{
 					current.put(ctx.transform(tag), r.rangeByScore(_min, _max,

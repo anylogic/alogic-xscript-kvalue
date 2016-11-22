@@ -7,13 +7,14 @@ import com.alogic.xscript.Logiclet;
 import com.alogic.xscript.LogicletContext;
 import com.alogic.xscript.kvalue.KVRowOperation;
 import com.anysoft.util.Properties;
+import com.anysoft.util.PropertiesConstants;
 import com.logicbus.kvalue.core.KeyValueRow;
 import com.logicbus.kvalue.core.SortedSetRow;
 
 public class KVZCountByLex extends KVRowOperation {
 
 	protected String min = "-";
-	protected String max = "-";
+	protected String max = "+";
 
 	public KVZCountByLex(String tag, Logiclet p) {
 		super(tag, p);
@@ -22,6 +23,8 @@ public class KVZCountByLex extends KVRowOperation {
 	@Override
 	public void configure(Properties p) {
 		super.configure(p);
+		min = PropertiesConstants.getRaw(p, "min", min);
+		max = PropertiesConstants.getRaw(p, "max", max);
 	}
 
 	@Override
