@@ -37,8 +37,13 @@ import com.alogic.xscript.kvalue.zset.KVZRem;
 import com.alogic.xscript.kvalue.zset.KVZRemrangeByRank;
 import com.alogic.xscript.kvalue.zset.KVZRemrangeByScore;
 import com.alogic.xscript.kvalue.zset.KVZScore;
+import com.alogic.xscript.kvalue.zset.KVZRemoveByLex;
+import com.alogic.xscript.kvalue.zset.KVZRangeByLex;
+import com.alogic.xscript.kvalue.zset.KVZCountByLex;
 import com.alogic.xscript.plugins.Segment;
 import com.alogic.xscript.kvalue.set.*;
+
+
 
 /**
  * KeyValue相关xscript插件的namespace
@@ -108,6 +113,9 @@ public class KVNS extends Segment {
 		registerModule("kv-zremrangebyrank",KVZRemrangeByRank.class);
 		registerModule("kv-zremrangebyscore",KVZRemrangeByScore.class);
 		registerModule("kv-zscore",KVZScore.class);
+		registerModule("kv-zremrangebylex",KVZRemoveByLex.class);
+		registerModule("kv-zrangebylex",KVZRangeByLex.class);
+		registerModule("kv-zlexcount",KVZCountByLex.class);
 		
 		/**
 		 * set

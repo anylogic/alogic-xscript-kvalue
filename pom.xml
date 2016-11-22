@@ -13,6 +13,16 @@
 			<version>${alogic.version}</version>
 		</dependency>
 	</dependencies>
+	<distributionManagement>  
+  <repository>  
+    <id>Releases</id>  
+    <url>http://10.142.90.52:8002/content/repositories/releases</url>  
+  </repository>  
+  <snapshotRepository>  
+    <id>snapshots</id>  
+    <url>http://10.142.90.52:8002/content/repositories/snapshots</url>  
+  </snapshotRepository>  
+</distributionManagement>   
 	<build>
 		<plugins>
 			<plugin>
@@ -43,10 +53,11 @@
 				</configuration>
 			</plugin>
 		</plugins>
-	</build>    
+	</build>
+ 
 	<parent>
 		<groupId>com.github.anylogic</groupId>
 		<artifactId>alogic</artifactId>
-		<version>1.6.5</version>
+		<version>1.6.6-SNAPSHOT</version>
 	</parent>
 </project>

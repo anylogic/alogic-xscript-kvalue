@@ -38,7 +38,7 @@ public class KVZRangeByScore extends KVRowOperation {
 		super(tag, p);
 	}
 
-	@Override
+	@Override  
 	public void configure(Properties p) {
 		super.configure(p);
 		min = PropertiesConstants.getRaw(p, "min", min);
@@ -66,16 +66,17 @@ public class KVZRangeByScore extends KVRowOperation {
 				List<Pair<String,Double>> l=null;
 				l=r.rangeByScoreWithScores(_min, _max, _reverse, _offset, _count);
 			    
-				List<Map<String,Double>> result=new ArrayList<Map<String,Double>>();
+				List<String> result=new ArrayList<String>();
 				if(null!=l&&l.size()>0){
 					Iterator<Pair<String,Double>> ite=l.iterator();
 					while(ite.hasNext()){
 						Pair<String,Double> p=ite.next();
-						Map<String,Double> map=new HashMap<String,Double>();
-						map.put(p.key(), p.value());
-						result.add(map);
+						StringBuffer eleWithScore=new StringBuffer("e:");
+						eleWithScore.append(p.key()+";s:").append(p.value());
+						result.add(eleWithScore.toString());
 					}
 				}
+				
 				
 				current.put(ctx.transform(tag), result);	
 			}else{
