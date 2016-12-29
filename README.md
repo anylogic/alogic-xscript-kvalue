@@ -181,5 +181,7 @@ alogic-xscript-kvalue是基于xscript2.0的kvalue插件，提供了使用kvalue�
 	+ 更改版本为1.6.5,和alogic-kvalue保持一致;
 	+ 增加list类型的相关插件(1.6.5.1)
 	+ 发布20160826版本
-
+- 1.6.5.1 [20161229 duanyy]
+	+ kv-row可以直接使用当前schema创建table
+	
 

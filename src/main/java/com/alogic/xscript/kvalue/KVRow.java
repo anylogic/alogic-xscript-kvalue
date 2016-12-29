@@ -24,6 +24,7 @@ public class KVRow extends KVNS{
 	 */
 	protected String pid = "$kv-table";
 	protected String cid = "$kv-row";
+	protected String schemaId = "$kv-schema";
 	protected String schema = "";
 	protected String table = "";
 	protected String key = "";
@@ -50,12 +51,14 @@ public class KVRow extends KVNS{
 		Table t = ctx.getObject(pid);
 		if (t == null){
 			//自己创建schema和table
-			Schema s = KValueSource.getSchema(schema);
+			Schema s = ctx.getObject(schemaId);
 			if (s == null){
-				log(String.format("Can not find the schema[%s]",schema), "error");
-				return ;
+				s = KValueSource.getSchema(schema);
+				if (s == null){
+					log(String.format("Can not find the schema[%s]",schema), "error");
+					return ;
+				}
 			}
-			
 			t = s.getTable(table);
 			if (t == null){
 				log(String.format("Can not find the table [%s/%s]",schema,table),"error");

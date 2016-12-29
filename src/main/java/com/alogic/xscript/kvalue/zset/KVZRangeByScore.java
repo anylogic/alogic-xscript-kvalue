@@ -74,7 +74,7 @@ public class KVZRangeByScore extends KVRowOperation {
 				List<Pair<String,Double>> l=null;
 				l=r.rangeByScoreWithScores(_min, _max, _reverse, _offset, _count);
 			    
-				List result=new ArrayList();
+				List<Object> result=new ArrayList<Object>();
 				if(null!=l&&l.size()>0){
 					Iterator<Pair<String,Double>> ite=l.iterator();
 					while(ite.hasNext()){
