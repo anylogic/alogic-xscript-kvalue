@@ -35,8 +35,8 @@ public class KVSchema extends KVNS{
 	@Override
 	public void configure(Properties p){
 		super.configure(p);
-		schema = PropertiesConstants.getString(p,"schema","");
-		cid = PropertiesConstants.getString(p, "cid", cid);
+		schema = PropertiesConstants.getString(p,"schema","",true);
+		cid = PropertiesConstants.getString(p, "cid", cid,true);
 	}
 	
 	@Override

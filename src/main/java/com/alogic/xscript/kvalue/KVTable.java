@@ -45,10 +45,10 @@ public class KVTable extends KVNS {
 	@Override
 	public void configure(Properties p) {
 		super.configure(p);
-		schema = PropertiesConstants.getString(p,"schema","");
+		schema = PropertiesConstants.getString(p,"schema","",true);
 		table = PropertiesConstants.getString(p, "table",table);
-		cid = PropertiesConstants.getString(p, "cid",cid);
-		pid = PropertiesConstants.getString(p, "pid",pid);
+		cid = PropertiesConstants.getString(p, "cid",cid,true);
+		pid = PropertiesConstants.getString(p, "pid",pid,true);
 	}
 
 	@Override

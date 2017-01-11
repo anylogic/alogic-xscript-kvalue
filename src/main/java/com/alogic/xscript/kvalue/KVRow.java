@@ -36,10 +36,10 @@ public class KVRow extends KVNS{
 	
 	public void configure(Properties p){
 		super.configure(p);
-		schema = PropertiesConstants.getString(p,"schema", schema);
-		table = PropertiesConstants.getString(p,"table", table);
-		pid = PropertiesConstants.getString(p,"pid", pid);
-		cid = PropertiesConstants.getString(p,"cid", cid);
+		schema = PropertiesConstants.getString(p,"schema", schema,true);
+		table = PropertiesConstants.getString(p,"table", table,true);
+		pid = PropertiesConstants.getString(p,"pid", pid,true);
+		cid = PropertiesConstants.getString(p,"cid", cid,true);
 		key = PropertiesConstants.getRaw(p, "key", key);
 		enableRWSplit = PropertiesConstants.getBoolean(p,"enableRWSplit", enableRWSplit);		
 	}

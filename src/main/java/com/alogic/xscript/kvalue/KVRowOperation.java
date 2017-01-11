@@ -36,7 +36,7 @@ public abstract class KVRowOperation extends AbstractLogiclet{
 	
 	public void configure(Properties p){
 		super.configure(p);
-		pid = PropertiesConstants.getString(p,"pid", pid);
+		pid = PropertiesConstants.getString(p,"pid", pid,true);
 		id = PropertiesConstants.getString(p,"id", "$" + getXmlTag());
 	}
 
