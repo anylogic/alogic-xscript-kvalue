@@ -17,8 +17,13 @@ import com.logicbus.kvalue.core.KeyValueRow;
 import com.logicbus.kvalue.core.SortedSetRow;
 
 /**
+ * 
+ * zrangebyscore指令
+ * 
  * @author zhongyi
- *
+ * 
+ * @version 1.6.7-20170329 [20170329 duanyy] <br>
+ * - 增加kv方式的返回方法 <br>
  */
 public class KVZRangeByScore extends KVRowOperation {
 
@@ -84,12 +89,17 @@ public class KVZRangeByScore extends KVRowOperation {
 							item.put(p.key(), p.value());
 							result.add(item);
 						}else{
-							
-							StringBuffer eleWithScore=new StringBuffer("e:");
-							eleWithScore.append(p.key()+";s:").append(p.value());
-							result.add(eleWithScore.toString());
+							if ("kv".equals(withscoreItemType)){
+								HashMap<String,Object> item = new HashMap<>();
+								item.put("e", p.key());
+								item.put("s", p.value());
+								result.add(item);
+							}else{
+								StringBuffer eleWithScore=new StringBuffer("e:");
+								eleWithScore.append(p.key()+";s:").append(p.value());
+								result.add(eleWithScore.toString());
+							}
 						}
-						
 					}
 				}
 								
