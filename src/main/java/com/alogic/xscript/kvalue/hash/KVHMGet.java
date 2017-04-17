@@ -23,6 +23,11 @@ public class KVHMGet extends KVRowOperation {
      * 返回结果的类型。list返回的是List<String>;map返回的是Map<String,Object>.default:list.
      */
     protected String resultType = "list";
+    
+    /**
+     * 当返回为map的时候，可以extend到当前节点
+     */
+    protected boolean extend = false;
 
     public KVHMGet(String tag, Logiclet p) {
         super(tag, p);
@@ -36,6 +41,7 @@ public class KVHMGet extends KVRowOperation {
         key = PropertiesConstants.getRaw(p, "key", key);
         delimeter = PropertiesConstants.getString(p, "delimiter", delimeter, true);
         resultType = PropertiesConstants.getRaw(p, "resultType", resultType);
+        extend = PropertiesConstants.getBoolean(p,"extend",extend,true);
     }
 
     @Override
@@ -43,24 +49,31 @@ public class KVHMGet extends KVRowOperation {
             LogicletContext ctx, ExecuteWatcher watcher) {
         String tagValue = ctx.transform(tag);
 
-        if (StringUtils.isNotEmpty(tagValue) && row instanceof HashRow) {
+        if (row instanceof HashRow) {
             if ("map".equalsIgnoreCase(resultType)) {                
                 HashRow r = (HashRow) row;
                 String keyList = ctx.transform(key);
                 List<String> l = r.mget(keyList.split(delimeter));
 
                 String[] keys = keyList.split(delimeter);
-                Map<String, Object> resultMap = new HashMap<String, Object>();
-                for (int i = 0; i < keys.length; i++) {
-                    resultMap.put(keys[i], l.get(i));
+                
+                if (extend){
+	                for (int i = 0; i < keys.length; i++) {
+	                    ctx.SetValue(keys[i], l.get(i));
+	                }
+                }else{
+	                Map<String, Object> resultMap = new HashMap<String, Object>();
+	                for (int i = 0; i < keys.length; i++) {
+	                    resultMap.put(keys[i], l.get(i));
+	                }
+	                current.put(tagValue, resultMap);
                 }
-
-                current.put(tagValue, resultMap);
             } else {
                 HashRow r = (HashRow) row;
                 String keyList = ctx.transform(key);
-
-                current.put(tagValue, r.mget(keyList.split(delimeter)));
+                if (StringUtils.isNotEmpty(tagValue)){
+                	current.put(tagValue, r.mget(keyList.split(delimeter)));
+                }
             }
         }
     }
