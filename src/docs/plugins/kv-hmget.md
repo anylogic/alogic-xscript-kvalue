@@ -19,7 +19,8 @@ com.alogic.xscript.kvalue.string.KVHMGet
 | 2 | id | 操作返回变量id,缺省为$kv-hmget |
 | 3 | key | 待查询的field的key,可以是多个,以delimeter分隔 |
 | 4 | delimeter | key列表分隔符，缺省为空，当为空的时候，key表示某个field的key |
-| 5 | tag | 插入到当前文档的tag |
+| 5 | resultType | 返回结果的类型。list返回的是List<String>;map返回的是Map<String,Object>.default:list。 |
+| 6 | tag | 插入到当前文档的tag |
 
 ### 案例
 
