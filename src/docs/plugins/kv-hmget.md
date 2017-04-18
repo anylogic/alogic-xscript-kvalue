@@ -20,6 +20,7 @@ com.alogic.xscript.kvalue.string.KVHMGet
 | 3 | key | 待查询的field的key,可以是多个,以delimeter分隔 |
 | 4 | delimeter | key列表分隔符，缺省为空，当为空的时候，key表示某个field的key |
 | 5 | resultType | 返回结果的类型。list返回的是List<String>;map返回的是Map<String,Object>.default:list。 |
+| 6 | extend | 当返回为map的时候，可以extend每一个key的结果到当前节点 |
 | 6 | tag | 插入到当前文档的tag |
 
 ### 案例
