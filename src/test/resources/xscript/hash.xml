@@ -12,7 +12,11 @@
 		<!-- 设置多个field的值 -->
 		<kv-hmset values="name;ketty;note;it's a web server;address;localhost"/>
 		<!-- 列出当前所有field到 -->
-		<kv-hgetall tag="data2"/>				
+		<kv-hgetall tag="data2"/>
+		
+		<kv-hmget tag="data-map" key="key1;name" resultType="map"/>
+		<kv-hmget key="key1;name;address" resultType="map" extend="true"/>
+		<log msg="address is ${address} "/>						
 		
 		<!-- 获取指定field的值 -->			
 		<kv-hget id="note" key="note"/>

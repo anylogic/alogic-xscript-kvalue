@@ -59,7 +59,9 @@ public class KVHMGet extends KVRowOperation {
                 
                 if (extend){
 	                for (int i = 0; i < keys.length; i++) {
-	                    ctx.SetValue(keys[i], l.get(i));
+	                    if(null != l.get(i)){
+	                        ctx.SetValue(keys[i], l.get(i));
+	                    }                    
 	                }
                 }else{
 	                Map<String, Object> resultMap = new HashMap<String, Object>();
