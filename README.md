@@ -187,4 +187,8 @@ alogic-xscript-kvalue是基于xscript2.0的kvalue插件，提供了使用kvalue�
 	+ 修正部分配置参数的取值方法
 - 1.6.7.1 [20170315 duanyy]
 	+ 基于alogic-1.6.7发布新版本
+- 1.6.8.1 [20170512 duanyy]
+	+ 基于alogic-1.6.8发布新版本
+	+ 解决1.6.8中xscript的兼容性问题
+	
 - 

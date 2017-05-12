@@ -1,10 +1,9 @@
 package com.alogic.xscript.kvalue;
 
-
-import java.util.Map;
 import com.alogic.xscript.ExecuteWatcher;
 import com.alogic.xscript.Logiclet;
 import com.alogic.xscript.LogicletContext;
+import com.alogic.xscript.doc.XsObject;
 import com.anysoft.util.Properties;
 import com.anysoft.util.PropertiesConstants;
 import com.logicbus.kvalue.context.KValueSource;
@@ -45,8 +44,7 @@ public class KVRow extends KVNS{
 	}
 
 	@Override
-	protected void onExecute(Map<String, Object> root,
-			Map<String, Object> current, LogicletContext ctx,
+	protected void onExecute(XsObject root,XsObject current, LogicletContext ctx,
 			ExecuteWatcher watcher) {
 		Table t = ctx.getObject(pid);
 		if (t == null){

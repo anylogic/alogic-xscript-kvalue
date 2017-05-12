@@ -4,6 +4,8 @@ import java.util.Map;
 import com.alogic.xscript.ExecuteWatcher;
 import com.alogic.xscript.LogicletContext;
 import com.alogic.xscript.Script;
+import com.alogic.xscript.doc.XsObject;
+import com.alogic.xscript.doc.json.JsonObject;
 import com.anysoft.util.CommandLine;
 import com.anysoft.util.Properties;
 import com.anysoft.util.Settings;
@@ -21,7 +23,9 @@ public class Demo {
 		long start = System.currentTimeMillis();
 		Map<String,Object> root = new HashMap<String,Object>();
 		LogicletContext ctx = new LogicletContext(p);
-		script.execute(root, root, ctx, new ExecuteWatcher.Quiet());
+		
+		XsObject doc = new JsonObject("root",root);
+		script.execute(doc, doc, ctx, new ExecuteWatcher.Quiet());
 		
 		System.out.println("Script:" + src);
 		System.out.println("Duration:" + (System.currentTimeMillis() - start) + "ms");
