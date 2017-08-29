@@ -2,15 +2,15 @@
 	xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
 	<modelVersion>4.0.0</modelVersion>
 	<artifactId>alogic-xscript-kvalue</artifactId>
-	<version>1.6.8-20170512</version>
+	<version>1.6.9-20170829</version>
 	<parent>
 		<groupId>com.github.anylogic</groupId>
 		<artifactId>alogic</artifactId>
-		<version>1.6.8</version>
+		<version>1.6.9</version>
 	</parent>
 	<properties>
 		<project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
-		<alogic.version>1.6.8</alogic.version>
+		<alogic.version>1.6.9</alogic.version>
 	</properties>
 	<dependencies>
 		<dependency>
